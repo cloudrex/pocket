@@ -10,7 +10,9 @@ $ npm install --save pocket
 
 #### Usage
 
+##### Basic Example
 ```ts
+// Import the database class.
 import Db from "pocket";
 
 // Initialization.
