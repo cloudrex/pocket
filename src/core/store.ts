@@ -67,15 +67,8 @@ export default class Store<T extends IDbModel> {
             return this.models.get(query.id) || null;
         }
 
-        for (const value in this.models.values()) {
-            const keys: string[] = Object.keys(query);
-
-            for (const key in keys) {
-                if (value[key] !== (query as any)[key]) {
-                    
-                }
-            }
-        }
+        // TODO: Implement.
+        throw new Error("Not yet implemented");
 
         return null;
     }
