@@ -3,6 +3,7 @@ import Store from "../store";
 import {Id} from "../id";
 import {IDbModel} from "../model";
 import {IDbOptions, defaultDbOptions} from "./options";
+import {DbInstanceTracker} from "../dbInstanceTracker";
 
 export type PipeReceiver = (item: Item, event: DbEvent) => void;
 
@@ -43,6 +44,9 @@ export default class Db<T extends IDbModel = any> {
         this.activePipe = undefined;
         this.readonly = false;
         this.store = new Store();
+
+        // Register instance.
+        DbInstanceTracker.register(this);
     }
 
     /**

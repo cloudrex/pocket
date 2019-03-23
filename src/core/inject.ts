@@ -1,4 +1,4 @@
-import {InstanceTracker} from "./instanceTracker";
+import {DbInstanceTracker} from "./dbInstanceTracker";
 
 /**
  * Injects a database instance onto the target.
@@ -6,7 +6,7 @@ import {InstanceTracker} from "./instanceTracker";
 export default function inject(instanceId: number): any {
     return function (target: any): any {
         return class extends target {
-            public readonly db: any = InstanceTracker.get(instanceId);
+            public readonly db: any = DbInstanceTracker.get(instanceId);
         };
     };
 }

@@ -6,6 +6,8 @@ import Storage, {IStorageEntry} from "./core/storage";
 import StorageEntry, {EntryData} from "./core/storageEntry";
 import Store from "./core/store";
 import Util, {Atom} from "./core/util";
+import {DbInstanceTracker} from "./core/dbInstanceTracker";
+import inject from "./core/inject";
 
 export {
     // Database
@@ -34,5 +36,9 @@ export {
 
     // Misc
     Util,
-    Atom
+    Atom,
+
+    // Injection
+    inject,
+    DbInstanceTracker
 };
