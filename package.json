@@ -1,0 +1,23 @@
+{
+    "name": "pocket",
+    "version": "1.0.0",
+    "description": "A Node.js, NoSQL database",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc"
+    },
+    "keywords": [
+        "db",
+        "database",
+        "nosql",
+        "data",
+        "storage"
+    ],
+    "author": "Atlas <cloudrex@outlook.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^11.11.6",
+        "tusk": "^1.2.4",
+        "typescript": "^3.3.4000"
+    }
+}
