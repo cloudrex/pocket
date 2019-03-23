@@ -39,7 +39,10 @@ item.update({
     message: "Fortune favors the brave."
 });
 
-// Sync the item from the database.
+// Apply the update's changes onto the database.
+item.put();
+
+// Sync (load) the item from the database.
 item.sync();
 ```
 

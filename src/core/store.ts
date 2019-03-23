@@ -57,7 +57,7 @@ export default class Store<T extends IDbModel> {
         return this;
     }
 
-    // TODO: find() should be based from findMany().
+    // TODO: find() should NOT be based from findMany(), to allow stopping upon first matching item.
     /**
      * Find a single model by its properties.
      */
@@ -73,6 +73,9 @@ export default class Store<T extends IDbModel> {
         return null;
     }
 
+    /**
+     * Find multiple models by their properties.
+     */
     public findMany(query: Partial<T>): T[] | null {
         // TODO: Implement.
         throw new Error("Not yet implemented");
