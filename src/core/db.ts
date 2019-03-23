@@ -100,6 +100,14 @@ export default class Db<T extends IDbModel = any> {
     }
 
     /**
+     * Remove an item from the database.
+     * @return {boolean} Whether the item was successfully removed.
+     */
+    public remove(id: Id): boolean {
+        return this.store.remove(id);
+    }
+
+    /**
      * Find an item by its properties.
      * Returns null if no matching item was found.
      */

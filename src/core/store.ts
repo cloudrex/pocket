@@ -25,6 +25,13 @@ export default class Store<T extends IDbModel> {
     }
 
     /**
+     * Determine whether a model with the specified id exists.
+     */
+    public has(id: Id): boolean {
+        return this.models.has(id);
+    }
+
+    /**
      * Save or overwrite a model onto the
      * store.
      */
@@ -91,5 +98,13 @@ export default class Store<T extends IDbModel> {
         }
 
         return this.models.get(id) || null;
+    }
+
+    /**
+     * Attempt to remove a model.
+     * @return {boolean} Whether the model was removed.
+     */
+    public remove(id: Id): boolean {
+        return this.models.delete(id);
     }
 }

@@ -13,6 +13,10 @@ export default class Item<T extends IDbModel = any> {
      */
     protected model: T;
 
+    /**
+     * @param {db} db The database instanced linked to this item.
+     * @param {T} model The corresponding model of the item.
+     */
     public constructor(db: Db, model: T) {
         this.db = db;
         this.model = model;
