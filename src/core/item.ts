@@ -1,4 +1,4 @@
-import Db from "./db";
+import Db from "./db/db";
 import {Id} from "./id";
 import {IDbModel, ModelChanges} from "./model";
 

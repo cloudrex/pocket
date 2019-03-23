@@ -16,7 +16,7 @@ $ npm install --save pocket
 import Db from "pocket";
 
 // Initialization.
-const db = new Db();
+const db = new Db("example");
 
 // Create and store an item.
 const item = db.create({

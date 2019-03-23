@@ -1,7 +1,8 @@
-import Item from "./item";
-import Store from "./store";
-import {Id} from "./id";
-import {IDbModel} from "./model";
+import Item from "../item";
+import Store from "../store";
+import {Id} from "../id";
+import {IDbModel} from "../model";
+import {IDbOptions, defaultDbOptions} from "./options";
 
 export type PipeReceiver = (item: Item, event: DbEvent) => void;
 
@@ -20,10 +21,25 @@ export enum DbEvent {
 export default class Db<T extends IDbModel = any> {
     public readonly store: Store<T>;
 
+    protected readonly options: IDbOptions;
+
+    /**
+     * The name representing this database.
+     */
+    protected readonly dbName: string
+
     protected activePipe?: PipeReceiver;
     protected readonly: boolean;
+    /**
+     * @param options Options for this database instance.
+     */
+    public constructor(name: string, options?: Partial<IDbOptions>) {
+        this.options = {
+            ...defaultDbOptions,
+            ...options
+        };
 
-    public constructor() {
+        this.dbName = name;
         this.activePipe = undefined;
         this.readonly = false;
         this.store = new Store();

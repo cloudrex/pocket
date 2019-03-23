@@ -1,4 +1,4 @@
-import Db, {PipeReceiver, DbEvent} from "./core/db";
+import Db, {PipeReceiver, DbEvent} from "./core/db/db";
 import {Id} from "./core/id";
 import Item from "./core/item";
 import {IDbModel, ModelChanges} from "./core/model";
