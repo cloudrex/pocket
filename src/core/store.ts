@@ -1,7 +1,7 @@
 import {IDbModel} from "./item";
 import {Id} from "./id";
 
-export default class Store<T extends IDbModel = any> {
+export default class Store<T extends IDbModel> {
     protected readonly models: Map<Id, T>;
     protected readonly values: T[];
 
