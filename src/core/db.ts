@@ -1,6 +1,7 @@
-import Item, {IDbModel} from "./item";
+import Item from "./item";
 import Store from "./store";
 import {Id} from "./id";
+import {IDbModel} from "./model";
 
 export type PipeReceiver = (item: Item, event: DbEvent) => void;
 
