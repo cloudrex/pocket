@@ -6,10 +6,10 @@ export type EntryData = Atom | {};
  * A single, file-based entry.
  */
 export default class StorageEntry {
-    public static serialize(data: EntryData): EntryData {
-        // Data is in atomic form, do not proceed.
+    public static serializeData(data: EntryData): string {
+        // Data is in atomic form, convert to a string.
         if (Util.isAtomic(data)) {
-            return data;
+            return data.toString();
         }
         // Data is in object form, serialize it.
         else if (typeof data === "object") {

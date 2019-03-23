@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import {Id} from "./id";
+import StorageEntry from "./storageEntry";
 
 export interface IStorageEntry {
     readonly id: Id;
@@ -63,8 +64,10 @@ export default class Storage {
     /**
      * Write or update an entry.
      */
-    public write(entry: IStorageEntry): void {
-        fs.writeFileSync(this.getEntryPath(entry.id), )
+    public write(entry: IStorageEntry): this {
+        fs.writeFileSync(this.getEntryPath(entry.id), StorageEntry.serializeData(entry.data))
+
+        return this;
     }
 
     /**
@@ -84,7 +87,10 @@ export default class Storage {
         // Create the file handle.
         const handle: number = fs.openSync(this.getEntryPath(id), "r");
 
-
+        // TODO: Finish implementing.
+        throw new Error("Not yet implemented");
+        
+        return null;
     }
 
     /**
