@@ -1,5 +1,5 @@
-import {IDbModel} from "./item";
 import {Id} from "./id";
+import {IDbModel} from "./model";
 
 export default class Store<T extends IDbModel> {
     protected readonly models: Map<Id, T>;
