@@ -1,4 +1,4 @@
-#### Pocket
+#### PocketDB
 
 A pocket-sized Node.js, NoSQL database.
 
