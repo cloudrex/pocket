@@ -5,7 +5,8 @@
     "main": "dist/index.js",
     "scripts": {
         "build": "tsc",
-        "test": "npm run build && node dist/test/runner.js"
+        "test": "npm run build && node dist/test/runner.js",
+        "benchmark": "npm run build && node dist/performance/runner.js"
     },
     "keywords": [
         "db",
