@@ -10,11 +10,11 @@ $ npm install --save pocket
 
 #### Features
 
-* **Tiny** -- Small package size (8.3 KB zipped), 0 depedencies.
-* **Performant** -- Uses efficient algorithms and data structures under the hood.
-* **Dynamic** -- Can be used in-memory, or as a persistent data storage.
-* **Extensible** -- Built with modularity in mind.
-* **Interactive** -- Simply, chain-able, and predictable API.
+* **Tiny** &mdash; Small package size (8.3 KB zipped), 0 depedencies.
+* **Performant** &mdash; Uses efficient algorithms and data structures under the hood.
+* **Dynamic** &mdash; Can be used in-memory, or as a persistent data storage.
+* **Extensible** &mdash; Built with modularity in mind.
+* **Interactive** &mdash; Simply, chain-able, and predictable API.
 
 #### Usage
 
