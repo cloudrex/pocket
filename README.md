@@ -40,7 +40,7 @@ item.update({
 });
 
 // Apply the update's changes onto the database.
-item.put();
+item.save();
 
 // Sync (load) the item from the database.
 item.sync();
