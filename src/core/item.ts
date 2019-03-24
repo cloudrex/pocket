@@ -1,6 +1,6 @@
-import Db from "./db/db";
 import {Id} from "./id";
 import {IDbModel, ModelChanges} from "./model";
+import Db from "../db/db";
 
 export default class Item<T extends IDbModel = any> {
     /**

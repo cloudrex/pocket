@@ -1,4 +1,3 @@
-import Db, {PipeReceiver, DbEvent} from "./core/db/db";
 import {Id} from "./core/id";
 import Item from "./core/item";
 import {IDbModel, ModelChanges} from "./core/model";
@@ -8,6 +7,7 @@ import Store from "./core/store";
 import Util, {Atom} from "./core/util";
 import {DbInstanceTracker} from "./core/dbInstanceTracker";
 import inject from "./core/inject";
+import Db, {PipeReceiver, DbEvent} from "./db/db";
 
 export {
     // Database

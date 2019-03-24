@@ -22,7 +22,7 @@ export enum DbEvent {
 export default class Db<T extends IDbModel = any> {
     public readonly store: Store<T>;
 
-    protected readonly options: IDbOptions;
+    public readonly options: IDbOptions;
 
     /**
      * The name representing this database.
@@ -31,6 +31,7 @@ export default class Db<T extends IDbModel = any> {
 
     protected activePipe?: PipeReceiver;
     protected readonly: boolean;
+    
     /**
      * @param options Options for this database instance.
      */
