@@ -4,7 +4,8 @@
     "description": "A Node.js, NoSQL database",
     "main": "dist/index.js",
     "scripts": {
-        "build": "tsc"
+        "build": "tsc",
+        "test": "npm run build && node dist/test/runner.js"
     },
     "keywords": [
         "db",
@@ -19,5 +20,8 @@
         "@types/node": "^11.11.6",
         "tusk": "^1.2.4",
         "typescript": "^3.3.4000"
+    },
+    "dependencies": {
+        "unit": "^1.4.3-0"
     }
 }
