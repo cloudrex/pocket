@@ -48,4 +48,18 @@ item.sync();
 
 #### Benchmarks
 
-*Coming soon!*
+100 samples (iterations) are used in all benchmarks in order to get accurate average readings.
+
+```shell
+# Write
+1K items   : ~0.06037225998938084ms avg.
+100K items : ~0.09036524929106235ms avg.
+1M items   : ~0.8414506393671036ms avg.
+100M items : ~82.79549079969526ms avg.
+
+# Read
+1K items   : ~0.04259479962289334ms avg.
+100K items : ~0.32166273042559623ms avg.
+1M items   : ~2.9804238600283863ms avg.
+100M items : ~311.5762038500607ms (~0.3s) avg.
+```
