@@ -1,9 +1,9 @@
-import Item from "../item";
-import Store from "../store";
-import {Id} from "../id";
-import {IDbModel} from "../model";
+import Item from "../core/item";
+import Store from "../core/store";
+import {Id} from "../core/id";
+import {IDbModel} from "../core//model";
 import {IDbOptions, defaultDbOptions} from "./options";
-import {DbInstanceTracker} from "../dbInstanceTracker";
+import {DbInstanceTracker} from "../core/dbInstanceTracker";
 
 export type PipeReceiver = (item: Item, event: DbEvent) => void;
 
