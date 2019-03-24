@@ -23,6 +23,7 @@ export default class Db<T extends IDbModel = any> {
     public readonly store: Store<T>;
 
     public readonly options: IDbOptions;
+    public readonly instanceId: number;
 
     /**
      * The name representing this database.
@@ -46,8 +47,8 @@ export default class Db<T extends IDbModel = any> {
         this.readonly = false;
         this.store = new Store();
 
-        // Register instance.
-        DbInstanceTracker.register(this);
+        // Register instance and save instance id.
+        this.instanceId = DbInstanceTracker.register(this);
     }
 
     /**
