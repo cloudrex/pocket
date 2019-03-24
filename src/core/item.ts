@@ -46,7 +46,7 @@ export default class Item<T extends IDbModel = any> {
     /**
      * Put/update model onto the database.
      */
-    public put(): this {
+    public save(): this {
         return this;
     }
 

@@ -85,7 +85,7 @@ export default class Db<T extends IDbModel = any> {
         const item: Item<T> = new Item(this, model);
 
         // Save the item for the first time.
-        item.put();
+        item.save();
 
         return item;
     }
