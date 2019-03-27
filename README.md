@@ -1,6 +1,6 @@
 #### PocketDB
 
-A pocket-sized Node.js, NoSQL database.
+A pocket-sized Node.js, easy-to-use, NoSQL database.
 
 #### Installation
 
@@ -26,7 +26,7 @@ import Db from "pocket";
 // Initialization.
 const db = new Db("example");
 
-// Create and store an item.
+// Create and store a record.
 const item = db.create({
     // Required property, used for identification.
     id: 0,
@@ -34,7 +34,7 @@ const item = db.create({
     message: "Hello world!"
 });
 
-// Update the item.
+// Update the record.
 item.update({
     message: "Fortune favors the brave."
 });
@@ -42,7 +42,7 @@ item.update({
 // Apply the update's changes onto the database.
 item.save();
 
-// Sync (load) the item from the database.
+// Sync (load) the record from the database.
 item.sync();
 ```
 
