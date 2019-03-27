@@ -1,7 +1,7 @@
 import {Id} from "./id";
 import {IDbModel} from "./model";
 
-export default class Store<T extends IDbModel> {
+export default class Store<T extends IDbModel = IDbModel> {
     protected readonly models: Map<Id, T>;
     protected readonly values: T[];
 
@@ -102,5 +102,12 @@ export default class Store<T extends IDbModel> {
      */
     public remove(id: Id): boolean {
         return this.models.delete(id);
+    }
+
+    /**
+     * The total amount of stored models.
+     */
+    public get size(): number {
+        return this.models.size;
     }
 }
