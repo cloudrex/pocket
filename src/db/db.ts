@@ -35,7 +35,7 @@ export default class Db<T extends IDbModel = any> extends EventEmitter {
 
     protected activePipe?: PipeReceiver;
     protected readonly: boolean;
-    
+
     /**
      * @param options Options for this database instance.
      */
@@ -153,8 +153,11 @@ export default class Db<T extends IDbModel = any> extends EventEmitter {
      * Returns null if no matching item was found.
      */
     public find(query: Partial<T>): Item<T> | null {
-        // TODO: Implement.
-        throw new Error("Not yet implemented");
+        const result: T | null = this.store.find(query);
+
+        if (result !== null) {
+            return this.create(result);
+        }
 
         return null;
     }

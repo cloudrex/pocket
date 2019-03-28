@@ -8,7 +8,7 @@ export enum StoreEvent {
      * is added into the store.
      */
     ModelSet = "modelSet",
-    
+
     /**
      * Emitted when multiple models
      * are added into the store.
@@ -77,7 +77,7 @@ export default class Store<T extends IDbModel = IDbModel> extends EventEmitter {
     public put(model: T): this {
         // Save in the map.
         this.models.set(model.id, model);
-        
+
         // Save the item into the cache.
         this.values.push(model);
 
