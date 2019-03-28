@@ -12,9 +12,11 @@ export type PipeReceiver = (item: Item, event: DbEvent) => void;
  * Possible item events done by the database.
  */
 export enum DbEvent {
-    Add,
-    Remove,
-    Update
+    ItemCreated = "itemCreated",
+    ItemAdded = "itemAdded",
+    ItemRemoved = "itemRemoved",
+    ItemModelUpdated = "itemUpdated",
+    ReadonlyModeChanged = "readonlyModeChanged"
 }
 
 /**
@@ -39,7 +41,7 @@ export default class Db<T extends IDbModel = any> extends EventEmitter {
      */
     public constructor(name: string, options?: Partial<IDbOptions>) {
         super();
-        
+
         this.options = {
             ...defaultDbOptions,
             ...options
@@ -60,6 +62,9 @@ export default class Db<T extends IDbModel = any> extends EventEmitter {
      */
     public setReadonly(readonly: boolean): this {
         this.readonly = readonly;
+
+        // Emit the readonly mode changed event.
+        this.emit(DbEvent.ReadonlyModeChanged, this.readonly);
 
         return this;
     }
@@ -89,6 +94,9 @@ export default class Db<T extends IDbModel = any> extends EventEmitter {
 
         // Save the item for the first time.
         item.save();
+
+        // Emit the item created event.
+        this.emit(DbEvent.ItemCreated, item);
 
         return item;
     }
@@ -121,6 +129,9 @@ export default class Db<T extends IDbModel = any> extends EventEmitter {
         // Save the model onto the store.
         this.store.put(model);
 
+        // Emit the item model updated event.
+        this.emit(DbEvent.ItemModelUpdated, model);
+
         return this;
     }
 
@@ -129,7 +140,12 @@ export default class Db<T extends IDbModel = any> extends EventEmitter {
      * @return {boolean} Whether the item was successfully removed.
      */
     public remove(id: Id): boolean {
-        return this.store.remove(id);
+        const result: boolean = this.store.remove(id);
+
+        // Emit the item removed event.
+        this.emit(DbEvent.ItemRemoved, id);
+
+        return result;
     }
 
     /**
