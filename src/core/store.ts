@@ -1,11 +1,40 @@
 import {Id} from "./id";
 import {IDbModel} from "./model";
+import {EventEmitter} from "events";
 
-export default class Store<T extends IDbModel = IDbModel> {
+export enum StoreEvent {
+    /**
+     * Emitted when a single model
+     * is added into the store.
+     */
+    ModelSet = "modelSet",
+    
+    /**
+     * Emitted when multiple models
+     * are added into the store.
+     */
+    ModelBulkSet = "modelBulkSet",
+
+    /**
+     * Emitted once an existing model
+     * is removed from the store.
+     */
+    ModelRemoved = "modelRemoved",
+
+    /**
+     * Emitted once all existing models
+     * are cleared from the store.
+     */
+    ModelsCleared = "modelsCleared"
+}
+
+export default class Store<T extends IDbModel = IDbModel> extends EventEmitter {
     protected readonly models: Map<Id, T>;
     protected readonly values: T[];
 
     public constructor() {
+        super();
+
         this.models = new Map();
         this.values = [];
     }
@@ -32,6 +61,16 @@ export default class Store<T extends IDbModel = IDbModel> {
     }
 
     /**
+     * Clear all stored models from the store.
+     */
+    public clear(): this {
+        this.models.clear();
+        this.emit(StoreEvent.ModelsCleared);
+
+        return this;
+    }
+
+    /**
      * Save or overwrite a model onto the
      * store.
      */
@@ -41,6 +80,9 @@ export default class Store<T extends IDbModel = IDbModel> {
         
         // Save the item into the cache.
         this.values.push(model);
+
+        // Emit new model event.
+        this.emit(StoreEvent.ModelSet);
 
         return this;
     }
@@ -53,6 +95,9 @@ export default class Store<T extends IDbModel = IDbModel> {
         for (const model of models) {
             this.put(model);
         }
+
+        // Emit put bulk event.
+        this.emit(StoreEvent.ModelBulkSet, models);
 
         return this;
     }
@@ -101,7 +146,12 @@ export default class Store<T extends IDbModel = IDbModel> {
      * @return {boolean} Whether the model was removed.
      */
     public remove(id: Id): boolean {
-        return this.models.delete(id);
+        const result: boolean = this.models.delete(id);
+
+        // Emit the model removed event.
+        this.emit(StoreEvent.ModelRemoved, id);
+
+        return result;
     }
 
     /**

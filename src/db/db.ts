@@ -4,6 +4,7 @@ import {Id} from "../core/id";
 import {IDbModel} from "../core//model";
 import {IDbOptions, defaultDbOptions} from "./options";
 import {DbInstanceTracker} from "../core/dbInstanceTracker";
+import {EventEmitter} from "events";
 
 export type PipeReceiver = (item: Item, event: DbEvent) => void;
 
@@ -19,7 +20,7 @@ export enum DbEvent {
 /**
  * A database instance.
  */
-export default class Db<T extends IDbModel = any> {
+export default class Db<T extends IDbModel = any> extends EventEmitter {
     public readonly store: Store<T>;
 
     public readonly options: IDbOptions;
@@ -37,6 +38,8 @@ export default class Db<T extends IDbModel = any> {
      * @param options Options for this database instance.
      */
     public constructor(name: string, options?: Partial<IDbOptions>) {
+        super();
+        
         this.options = {
             ...defaultDbOptions,
             ...options
