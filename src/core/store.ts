@@ -1,5 +1,5 @@
 import {Id} from "./id";
-import {IDbModel} from "./model";
+import {IModel} from "./model";
 import {EventEmitter} from "events";
 
 export enum StoreEvent {
@@ -28,8 +28,9 @@ export enum StoreEvent {
     ModelsCleared = "modelsCleared"
 }
 
-export default class Store<T extends IDbModel = IDbModel> extends EventEmitter {
+export default class Store<T extends IModel = IModel> extends EventEmitter {
     protected readonly models: Map<Id, T>;
+
     protected readonly values: T[];
 
     public constructor() {

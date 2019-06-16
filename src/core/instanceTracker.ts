@@ -3,7 +3,7 @@ import Db from "../db/db";
 /**
  * Keeps track of class instances.
  */
-export abstract class DbInstanceTracker {
+export abstract class InstanceTracker {
     // Start at -1 to initially increment to 0.
     protected static counter: number = -1;
 

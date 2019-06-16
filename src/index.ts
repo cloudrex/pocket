@@ -1,11 +1,11 @@
 import {Id} from "./core/id";
 import Item from "./core/item";
-import {IDbModel, ModelChanges} from "./core/model";
+import {IModel, ModelChanges} from "./core/model";
 import Storage, {IStorageEntry} from "./core/storage";
 import StorageEntry, {EntryData} from "./core/storageEntry";
 import Store from "./core/store";
 import Util, {Atom} from "./core/util";
-import {DbInstanceTracker} from "./core/dbInstanceTracker";
+import {InstanceTracker} from "./core/instanceTracker";
 import inject from "./core/inject";
 import Db, {PipeReceiver, DbEvent} from "./db/db";
 
@@ -22,7 +22,7 @@ export {
     Item,
 
     // Model
-    IDbModel,
+    IModel as IDbModel,
     ModelChanges,
 
     // Storage
@@ -40,5 +40,5 @@ export {
 
     // Injection
     inject,
-    DbInstanceTracker
+    InstanceTracker as DbInstanceTracker
 };

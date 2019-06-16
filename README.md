@@ -18,16 +18,26 @@ $ npm install --save pocket
 
 #### Usage
 
-##### Basic Example
 ```ts
 // Import the database class.
-import Db from "pocket";
+import Db, {IModel, IProvider} from "pocket";
+
+class ExampleProvider implements IProvider {
+    // ...
+}
+
+interface IExampleModel extends IModel {
+    message: string;
+}
 
 // Initialization.
-const db = new Db("example");
+const db = new Db<IExampleModel>("example");
+
+// Use a custom provider (ex. JSON file).
+db.use(new ExampleProvider());
 
 // Create and store a record.
-const item = db.create({
+let item = db.create({
     // Required property, used for identification.
     id: 0,
 
@@ -44,11 +54,16 @@ item.save();
 
 // Sync (load) the record from the database.
 item.sync();
+
+// Find the record by its 'message' property.
+item = db.find({
+    message: "Hello world!"
+})!;
 ```
 
 #### Benchmarks
 
-100 samples (iterations) are used in all benchmarks in order to get accurate average readings.
+100 samples (iterations) are used in all benchmarks in order to get accurate, average readings.
 
 ```shell
 # Write

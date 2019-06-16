@@ -1,11 +1,11 @@
 import Db from "../db/db";
 import {performance} from "perf_hooks";
-import {IDbModel} from "../core/model";
+import {IModel} from "../core/model";
 import {Item} from "..";
 
 export type StepCallback = () => void;
 
-export interface IBenchmarkModel extends IDbModel {
+export interface IBenchmarkModel extends IModel {
     readonly data: any;
 }
 

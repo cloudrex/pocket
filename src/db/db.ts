@@ -1,9 +1,9 @@
 import Item from "../core/item";
 import Store from "../core/store";
 import {Id} from "../core/id";
-import {IDbModel} from "../core//model";
+import {IModel} from "../core//model";
 import {IDbOptions, defaultDbOptions} from "./options";
-import {DbInstanceTracker} from "../core/dbInstanceTracker";
+import {InstanceTracker} from "../core/instanceTracker";
 import {EventEmitter} from "events";
 
 export type PipeReceiver = (item: Item, event: DbEvent) => void;
@@ -22,10 +22,11 @@ export enum DbEvent {
 /**
  * A database instance.
  */
-export default class Db<T extends IDbModel = any> extends EventEmitter {
+export default class Db<T extends IModel = any> extends EventEmitter {
     public readonly store: Store<T>;
 
     public readonly options: IDbOptions;
+
     public readonly instanceId: number;
 
     /**
@@ -34,6 +35,7 @@ export default class Db<T extends IDbModel = any> extends EventEmitter {
     protected readonly dbName: string
 
     protected activePipe?: PipeReceiver;
+
     protected readonly: boolean;
 
     /**
@@ -53,7 +55,7 @@ export default class Db<T extends IDbModel = any> extends EventEmitter {
         this.store = new Store();
 
         // Register instance and save instance id.
-        this.instanceId = DbInstanceTracker.register(this);
+        this.instanceId = InstanceTracker.register(this);
     }
 
     /**
@@ -113,6 +115,10 @@ export default class Db<T extends IDbModel = any> extends EventEmitter {
         }
 
         return null;
+    }
+
+    public getOrDefault(id: Id, defaultItem: Item<T>): Item<T> {
+        return this.get(id) || defaultItem;
     }
 
     /**

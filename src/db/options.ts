@@ -1,4 +1,5 @@
 import {DbStrategy} from "./strategy";
+import {IProvider} from "../core/provider";
 
 export interface IDbOptions {
     /**

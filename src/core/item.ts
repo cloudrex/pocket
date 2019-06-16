@@ -1,8 +1,8 @@
 import {Id} from "./id";
-import {IDbModel, ModelChanges} from "./model";
+import {IModel, ModelChanges} from "./model";
 import Db from "../db/db";
 
-export default class Item<T extends IDbModel = any> {
+export default class Item<T extends IModel = any> {
     /**
      * The database connected to this item.
      */

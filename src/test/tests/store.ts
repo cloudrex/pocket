@@ -1,8 +1,8 @@
 import {unit, test, target, Assert} from "unit";
 import Store from "../../core/store";
-import {IDbModel} from "../../core/model";
+import {IModel} from "../../core/model";
 
-const testModel: IDbModel = {
+const testModel: IModel = {
     id: 1
 };
 
@@ -61,11 +61,11 @@ export default class {
     @test("should add multiple models")
     @target(Store.prototype.putMany)
     public putMany() {
-        const testModel2: IDbModel = {
+        const testModel2: IModel = {
             id: 2
         };
 
-        const testModel3: IDbModel = {
+        const testModel3: IModel = {
             id: 3
         };
 
