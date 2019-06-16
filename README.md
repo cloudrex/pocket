@@ -2,6 +2,13 @@
 
 A pocket-sized Node.js, easy-to-use, NoSQL database.
 
+
+#### Important note(s)
+
+* This project is non-production ready, and barely has any development done.
+* With that being said, I'm planning on working and refining its functionality in the future, as I am currently busy actively working on another project.
+* Some essential methods (such as find) have not even been implemented, however I encourage *you* to contribute and see what you can accomplish!
+
 #### Installation
 
 ```shell
