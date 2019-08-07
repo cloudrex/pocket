@@ -18,7 +18,7 @@
     "author": "Atlas <cloudrex@outlook.com>",
     "license": "MIT",
     "devDependencies": {
-        "@types/node": "^12.0.8",
+        "@types/node": "^12.7.0",
         "tusk": "^1.2.4",
         "typescript": "^3.5.2",
         "unit": "^1.4.3-0"
